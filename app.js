@@ -88,7 +88,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
             var magic = new Magic(mmm.MAGIC_MIME_ENCODING);
             magic.detectFile('./files/'+e.f, function(err, result) {
                 var fil = 'error';
-                if (result!='binary') fil = fs.readFileSync('./files/'+e.f,'utf8');
+                if (fs.readFileSync('./files/'+e.f,'utf8') == "" || result!='binary') fil = fs.readFileSync('./files/'+e.f,'utf8');
                 io.emit('txtFile', {'f': fil});
             });
         });
@@ -122,7 +122,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
             var name = './files/'+e.path+e.name;
             if(!fs.existsSync(name))
             {
-                fs.writeFileSync(name, "//"+e.name);
+                fs.writeFileSync(name, "");
                 readDirs(e.path);
             }
             else someErrors("Ya existe un archivo con este nombre");
