@@ -1,0 +1,10 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+  	script(src='/socket.io/socket.io.js/')
+    script
+      var socket = io.connect(location.host.substring(0, location.host.indexOf(":")));
+    block content

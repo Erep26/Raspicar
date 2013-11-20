@@ -1,0 +1,167 @@
+extends layout
+block headCSS
+	link(rel='stylesheet' href='/codemirror/codemirror.css')
+	link(rel='stylesheet' href='/codemirror/theme/3024-day.css')
+	link(rel='stylesheet' href='/codemirror/theme/3024-night.css')
+	link(rel='stylesheet' href='/codemirror/theme/ambiance.css')
+	link(rel='stylesheet' href='/codemirror/theme/base16-dark.css')
+	link(rel='stylesheet' href='/codemirror/theme/base16-light.css')
+	link(rel='stylesheet' href='/codemirror/theme/blackboard.css')
+	link(rel='stylesheet' href='/codemirror/theme/cobalt.css')
+	link(rel='stylesheet' href='/codemirror/theme/eclipse.css')
+	link(rel='stylesheet' href='/codemirror/theme/elegant.css')
+	link(rel='stylesheet' href='/codemirror/theme/erlang-dark.css')
+	link(rel='stylesheet' href='/codemirror/theme/lesser-dark.css')
+	link(rel='stylesheet' href='/codemirror/theme/mbo.css')
+	link(rel='stylesheet' href='/codemirror/theme/midnight.css')
+	link(rel='stylesheet' href='/codemirror/theme/monokai.css')
+	link(rel='stylesheet' href='/codemirror/theme/neat.css')
+	link(rel='stylesheet' href='/codemirror/theme/night.css')
+	link(rel='stylesheet' href='/codemirror/theme/paraiso-dark.css')
+	link(rel='stylesheet' href='/codemirror/theme/paraiso-light.css')
+	link(rel='stylesheet' href='/codemirror/theme/rubyblue.css')
+	link(rel='stylesheet' href='/codemirror/theme/solarized.css')
+	link(rel='stylesheet' href='/codemirror/theme/the-matrix.css')
+	link(rel='stylesheet' href='/codemirror/theme/tomorrow-night-eighties.css')
+	link(rel='stylesheet' href='/codemirror/theme/twilight.css')
+	link(rel='stylesheet' href='/codemirror/theme/vibrant-ink.css')
+	link(rel='stylesheet' href='/codemirror/theme/xq-dark.css')
+	link(rel='stylesheet' href='/codemirror/theme/xq-light.css')
+	link(rel='stylesheet', href='/css/files.css')
+
+block headJS
+	script(src="/codemirror/codemirror.js")
+	script(src="/codemirror/addon/edit/matchbrackets.js")
+	script(src="/codemirror/addon/mode/loadmode.js")
+	script(src="/js/gestFile.js")
+	
+	
+block content
+	#page.container
+		h1 RaspiCar
+		h2 Archivos
+		#divFiles.row
+			#goRoot.col-xs-1
+				a.fa.fa-align-justify(onclick="goRoot();")
+			ol.breadcrumb.col-xs-9
+			.new.col-xs-1
+				a.fa.fa-file-o(onclick="newFile();")
+			.new.col-xs-1(style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;")
+				a.fa.fa-folder-open-o(onclick="newDir();")
+		#llista.col-xs-10.col-md-offset-1
+		#miModal.modal.fade
+			.modal-dialog
+				.modal-content
+					.modal-header.row
+						.navbar-left
+							h4#fileTitle
+						.navbar-right
+							#save.btn.fa.fa-check-circle(onclick="saveChanges()", data-dismiss="modal")
+							#noSave.btn.fa.fa-times-circle(data-dismiss="modal")
+					.modal-body
+					.modal-footer
+						select#modo
+							option texto plano
+							option apl
+							option asterisk
+							option clike
+							option clojure
+							option cobol
+							option coffeescript
+							option commonlisp
+							option css
+							option d
+							option diff
+							option dtd
+							option ecl
+							option eiffel
+							option erlang
+							option fortran
+							option gas
+							option gfm
+							option gherkin
+							option go
+							option groovy
+							option haml
+							option haskell
+							option haxe
+							option htmlembedded
+							option htmlmixed
+							option http
+							option jade
+							option javascript
+							option jinja2
+							option less
+							option livescript
+							option lua
+							option markdown
+							option meta
+							option mirc
+							option nginx
+							option ntriples
+							option ocaml
+							option octave
+							option pascal
+							option perl
+							option php
+							option pig
+							option properties
+							option python
+							option q
+							option r
+							option rst
+							option ruby
+							option rust
+							option sass
+							option scheme
+							option shell
+							option sieve
+							option smalltalk
+							option smarty
+							option smartymixed
+							option sparql
+							option sql
+							option stex
+							option tcl
+							option tiddlywiki
+							option tiki
+							option toml
+							option turtle
+							option vb
+							option vbscript
+							option velocity
+							option verilog
+							option xml
+							option xquery
+							option yaml
+							option z80
+
+						select#tema
+							option default
+							option 3024-day
+							option 3024-night
+							option ambiance
+							option base16-dark
+							option base16-light
+							option blackboard
+							option cobalt
+							option eclipse
+							option elegant
+							option erlang-dark
+							option lesser-dark
+							option mbo
+							option midnight
+							option monokai
+							option neat
+							option night
+							option paraiso-dark
+							option paraiso-light
+							option rubyblue
+							option solarized dark
+							option solarized light
+							option the-matrix
+							option tomorrow-night-eighties
+							option twilight
+							option vibrant-ink
+							option xq-dark
+							option xq-light

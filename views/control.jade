@@ -1,0 +1,12 @@
+extends layout
+block headCSS
+	link(rel='stylesheet', href='/css/control.css')
+block headJS
+	script(src="./js/camImages.js")
+	script(src="./js/fps.js")
+block content
+	#divTodo
+		h1 RaspiCar
+		p Welcome to #{title}
+		#fps
+		canvas#canvasCamera(width="600px", height="400px", style="border: solid 1px black;")

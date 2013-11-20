@@ -1,0 +1,118 @@
+html
+{
+	height: 100%;
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+#page
+{/*
+	float: left;
+	position: relative;
+	display: block;*/
+}
+
+.CodeMirror{
+	height: 500px;
+}
+
+#miModal .modal-dialog{
+	width: 1000px;
+}
+
+#miModal .modal-body{
+	padding: 0px;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#miModal .modal-footer{
+	margin-top: 0px;
+}
+
+#miModal .btn{
+	padding: 0px;
+	font-size: 2em;
+	margin-left: 5px;
+	color: gray;
+}
+
+#miModal .modal-header{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+#miModal .row{
+	border: none;
+}
+
+#miModal .btn:hover{
+	color: black;
+}
+
+.selArxiu:hover{
+	background-color: #CDCDCD;
+}
+
+a{
+	cursor: pointer!important;
+	text-decoration: none;
+	color: #428bca;
+}
+a:hover{
+	color: #000000;
+}
+
+a *{
+	cursor: pointer!important;
+	text-decoration: none;
+	color: #428bca;
+}
+
+
+
+#goRoot{
+	height: 100%;
+	margin-top: auto;
+	padding: 8px 15px;
+	background-color: #dfdfdf;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	text-align: center;
+	/*border-right: 1px solid black;*/
+}
+
+.breadcrumb{
+	overflow: auto;
+	direction: ltr;
+	white-space: nowrap;
+	border-radius: 0px;
+	height: 100%;
+}
+
+.breadcrumb > li {
+  display: inline;
+}
+
+.new{
+	height: 100%;
+	margin-top: auto;
+	padding: 8px 15px;
+	background-color: #dfdfdf;
+	text-align: center;
+	/*border-left: 1px solid black;*/
+}
+
+#divFiles{
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
