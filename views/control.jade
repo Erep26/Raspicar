@@ -2,11 +2,17 @@ extends layout
 block headCSS
 	link(rel='stylesheet', href='/css/control.css')
 block headJS
-	script(src="./js/camImages.js")
+	script(src="./js/control.js")
 	script(src="./js/fps.js")
 block content
 	#divTodo
-		h1 RaspiCar
-		p Welcome to #{title}
+		h1 ControlWeb
 		#fps
 		canvas#canvasCamera(width="600px", height="400px", style="border: solid 1px black;")
+		#controls
+			img#up(src="./img/arrowUp.svg")
+			br
+			img#left(src="./img/arrowLeft.svg")
+			img#down(src="./img/arrowDown.svg")
+			img#right(src="./img/arrowRight.svg")
+			

@@ -7,6 +7,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var fs = require('fs-extra');
+var mongo = require('./mongo');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.get('/', routes.index);
 app.get('/index', routes.index);
 app.get('/control', routes.control);
 app.get('/files', routes.files);
+app.get('/conf', routes.conf);
 
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
@@ -73,9 +75,9 @@ var server = http.createServer(app).listen(app.get('port'), function(){
             //console.log(jsonFile);
             io.emit('fileList',{'jsonFile': jsonFile});
         }
-        function someErrors(str)
+        function someErrors(intErr)
         {
-            io.emit('error', {'err': str});
+            io.emit('error', {'err': intErr});
         }
     
     	io.on('gestFiles', function(e){readDirs(e.path)});
@@ -107,8 +109,8 @@ var server = http.createServer(app).listen(app.get('port'), function(){
             }
             else
             {
-                var tipo = (fs.lstatSync(newName).isDirectory())?"directorio":"archivo";
-                someErrors("Ya existe un " + tipo + " con este nombre");
+                var tipo = (fs.lstatSync(newName).isDirectory())?"9":"10";
+                someErrors(tipo);
             } 
         });
 
@@ -125,7 +127,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
                 fs.writeFileSync(name, "");
                 readDirs(e.path);
             }
-            else someErrors("Ya existe un archivo con este nombre");
+            else someErrors(10);
         });
 
         io.on('newDir', function(e){
@@ -135,8 +137,34 @@ var server = http.createServer(app).listen(app.get('port'), function(){
                 fs.mkdirSync(name);
                 readDirs(e.path);
             }
-            else someErrors("Ya existe un directorio con este nombre");
+            else someErrors(9);
         });
 
+
+
+        //control web
+        io.on('up', function(){
+            console.log('up');
+        });
+        io.on('down', function(){
+            console.log('down');
+        });
+        io.on('left', function(){
+            console.log('left');
+        });
+        io.on('right', function(){
+            console.log('right');
+        });
+
+
+
+
+        //conf
+
+        io.on('langChange', function(e){
+            mongo.idiom.update({}, {$set: {select: e.selLang }});
+            console.log(e.selLang)
+            //e.selLang;
+        });
     });
 });

@@ -24,14 +24,14 @@ function getListFiles(pth)
 function saveChanges()
 {
 	socket.emit('saveFile', {'file': $('#fileTitle').text(), 'cont': editor.getValue()});
-	notify("success", "Se han guardado los cambios realizados");
+	notify("success", textos[0]);
 }
 
 function rename(name)
 {
-	 bootbox.prompt("Escriva el nuevo nombre para " + name, function(result) {
+	 bootbox.prompt(textos[1] + name, function(result) {
 		if (result == "") {
-			notify("danger", "Error: no se puede renombrar a un nobre vacio");
+			notify("danger", textos[2]);
 		}
 		else if(result != null){
 			var strPath = getStrPath();
@@ -41,9 +41,9 @@ function rename(name)
 }
 
 function newFile(){
-	bootbox.prompt("Escriva el nombre para el nuevo archivo", function(result) {
+	bootbox.prompt(textos[3], function(result) {
 		if (result == "") {
-			notify("danger", "Error: no se puede crear un archivo con nobre vacio");
+			notify("danger", textos[4]);
 		}
 		else if(result != null){
 			var strPath = getStrPath();
@@ -53,9 +53,9 @@ function newFile(){
 }
 
 function newDir(){
-	bootbox.prompt("Escriva el nombre para el nuevo directorio", function(result) {
+	bootbox.prompt(textos[5], function(result) {
 		if (result == "") {
-			notify("danger", "Error: no se puede crear un directorio con nobre vacio");
+			notify("danger", textos[6]);
 		}
 		else if(result != null){
 			var strPath = getStrPath();
@@ -67,7 +67,7 @@ function newDir(){
 function removeFileDir(name){
 	var strPath = getStrPath();
 	socket.emit('borra', {'path': strPath,'rmName': name});
-	notify('success', 'Elemento borrado con exito');
+	notify('success', textos[7]);
 }
 
 socket.on('fileList', function(n){
@@ -96,7 +96,7 @@ socket.on('fileList', function(n){
 });
 
 socket.on('error', function(e){
-	notify('danger', e.err);
+	notify('danger', textos[e.err]);
 });
 
 socket.on('txtFile', function(n){
@@ -123,7 +123,7 @@ socket.on('txtFile', function(n){
 	        theme: $('#tema').find('option:selected').text()
 	    });
 	}
-	else notify("danger", "Error: el archivo no es codificable en formato de texto");
+	else notify("danger", textos[9]);
 });
 
 function linkdir(n){

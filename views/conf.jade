@@ -1,0 +1,13 @@
+extends layout
+block headCSS
+	link(rel='stylesheet', href='/css/index.css')
+block headJS
+	script(src="/js/conf.js")
+block content
+	h1 Configuracion
+	select#idioma(onChange="langChange(this)")
+		each lang in idiom
+			if lang.id == selIdiom
+				option(value= lang.id, selected) #{lang.str}
+			else
+				option(value= lang.id) #{lang.str}
