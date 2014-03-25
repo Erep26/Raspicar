@@ -4,7 +4,7 @@ block headCSS
 block headJS
 	script(src="/js/conf.js")
 block content
-	h1 Configuracion
+	h1 #{literal.conf}
 	select#idioma(onChange="langChange(this)")
 		each lang in idiom
 			if lang.id == selIdiom
